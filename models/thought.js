@@ -1,28 +1,30 @@
-const { Schema, Model, Types } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
 
-const ReactionSchema = new Schema ({
-    reactionId: {
-        type: mongoose.Schema.Types.ObjectId,
-        default: new => Types.ObjectId()
-    },
-    reactionBody: {
-        type: string,
-        required: true,
-        maxlength: 280
-    },
-    username: {
-        type: string,
-        required: true
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now,
-        get: createdAtVal => dateFormat(createdAtVal)
+const ReactionSchema = new Schema(
+    {
+        reactionId: {
+            type: Schema.Types.ObjectId,
+            default: () => new Types.ObjectId()
+        },
+        reactionBody: {
+            type: String,
+            required: true,
+            maxlength: 280
+        },
+        username: {
+            type: String,
+            required: true
+        },
+        createdAt: {
+            type: Date,
+            default: Date.now,
+            // get: createdAtVal => dateFormat(createdAtVal)
+        }
     }
-});
+);
 
 const ThoughtSchema = new Schema ({
-    toughtText: {
+    thoughtText: {
         type: String,
         required: true,
         maxlength: 280
@@ -30,7 +32,7 @@ const ThoughtSchema = new Schema ({
     createdAt: {
         type: Date,
         default: Date.now,
-        get: createdAtVal => dateFormat(createdAtVal)
+        // get: createdAtVal => dateFormat(createdAtVal)
     },
     username: {
         type: String,
